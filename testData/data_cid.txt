@@ -1,0 +1,18 @@
+!DOCTYPE doctype html>
+<html>
+ <head>
+  <title>
+   Google Scholar
+  </title>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible"/>
+  <meta content="always" name="referrer"/>
+  <meta content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=2" name="viewport"/>
+  <style>
+   @viewport{width:device-width;min-zoom:1;max-zoom:2;}
+  </style>
+  <meta content="telephone=no" name="format-detection"/>
+  <meta content="Y8J1_s45IeTudoUMT5t7AB5kel7unVEK-WjxXG4nPkQ" name="google-site-verification"/>
+  <link href="https://scholar.google.com/" rel="canonical"/>
+  <style>
+   html,body,form,table,div,h1,h2,h3,h4,h5,h6,img,ol,ul,li,button{margin:0;padding:0;border:0;}table{border-collapse:collapse;border-width:0;empty-cells:show;}html,body{height:100%}#gs_top{position:relative;box-sizing:border-box;min-height:100%;min-width:964px;-webkit-tap-highlight-color:rgba(0,0,0,0);}#gs_top>*:not(#x){-webkit-tap-highlight-colo
