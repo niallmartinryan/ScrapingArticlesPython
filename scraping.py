@@ -2,23 +2,32 @@
 # soup = BeautifulSoup(page.content, 'html.parser')
 
 # print(soup.prettify())
+import sys
+import os.path
 
+# needed in order to import resources file.. and any other file rip..
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)) + '\\resources\\')
+
+
+import resources as res
 from bs4 import BeautifulSoup
 import urllib
 import urllib.parse
 import urllib.request
-import os.path
-import test
+
+#print(resources.sexy_url)
+# import resources.resources.ScrapingPython 
 
 
 
 # look up about constants in python..
-url = "http://scholar.google.com"
-save_path = "C:/Users/niall/Documents/A college/FourthYear/dissertation/ScrapingPython/testData/"
-name_file_test = "data_cid.txt"
+url = res.GOOGLE_SCHOLAR_MAIN_PAGE
+# save_path = "C:/Users/niall/Documents/A college/FourthYear/dissertation/ScrapingPython/testData/"
+name_file_test = res.DATA_CID_FILE_NAME
 
 
-complete_path = os.path.join(save_path, name_file_test)
+# Some stuff happening here
+complete_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), name_file_test)
 file = open(complete_path, "w")
 
 
@@ -40,7 +49,7 @@ while len(urls) > 0:
 
         file.close()
         #print(soup.prettify()[0::1])
-        print(soup.findAll('data-cid'))
+        print(soup.findAll(res. DATA_CID_SEARCH_STRING))
 
 
 
