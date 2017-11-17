@@ -87,12 +87,19 @@ while len(urls) > 0:
                 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
             }
             r = requests.get(url, headers = headers)
-            # soup = BeautifulSoup(r.text,"html.parser")
+
+            text = r.text.encode("utf-8")
+            soup = BeautifulSoup(text,"html.parser")
             print(r.text[0:1000])
             
             file.write(r.text)
             file.close()
-            # print(soup.findAll(res.DATA_CID_SEARCH_STRING))
+            mydivs = soup.findAll("div", { "class" : "gs_r gs_or gs_scl" })
+
+
+            print(soup.findAll(res.DATA_CID_SEARCH_STRING))
+
+            print(mydivs[0].encode("utf-8"))
                 # htmltext = urllib.request.urlopen(urls[0]).read()
         except Exception as e:
            print(e)      
