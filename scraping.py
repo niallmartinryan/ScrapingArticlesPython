@@ -27,13 +27,13 @@ import requests
 
 
 # look up about constants in python..
-url = "https://scholar.google.com/scholar?=0&q=c&hl=en&as_sdt=0,5" 
+# url = "https://scholar.google.com/scholar?=0&q=c&hl=en&as_sdt=0,5" 
 # url = res.GOOGLE_SCHOLAR_MAIN_PAGE
 searchIndex = "0"
 # searchCriteria = ""
-testSearchCriteria = "a"
-# url = (res.GOOGLE_SCHOLAR_SEARCH_START + searchIndex + res.GOOGLE_SCHOLAR_SEARCH_MIDDLE + 
-        # testSearchCriteria + res.GOOGLE_SCHOLAR_SEARCH_END)
+testSearchCriteria = "c"
+url = (res.GOOGLE_SCHOLAR_SEARCH_START + searchIndex + res.GOOGLE_SCHOLAR_SEARCH_MIDDLE + 
+        testSearchCriteria + res.GOOGLE_SCHOLAR_SEARCH_END)
 # save_path = "C:/Users/niall/Documents/A college/FourthYear/dissertation/ScrapingPython/testData/"
 name_file_test = res.DATA_CID_FILE_NAME
 
@@ -49,78 +49,83 @@ visited = [url]
 
 # aboutResults = soup.find_all("div", class_="gs_ab_mdw")
 
-# MaxNumResults =         # This will be the result we grab from beauSoup and then -10 for the index of that page  
-print(urls[0])
-while len(urls) > 0:
-    
+maxNumResults = 10      # This will be the result we grab from beauSoup and then -10 for the index of that page  
+# print(urls[0])
+i = 0   # increment/ index of pages
+# while len(urls) > 0:
+while i <= maxNumResults: 
     # do some stuff here
+    print(urls[0])
+# while i <= maxNumResults:
+    try:
+        # url = 'https://scholar.google.pl/citations?view_op=search_authors&mauthors=label:security'
 
-    # while 
-        try:
-            # url = 'https://scholar.google.pl/citations?view_op=search_authors&mauthors=label:security'
+        # request_headers = {
+        #     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+        #     'accept-encoding': 'gzip, deflate, br',
+        #     'accept-language': 'en-US,en;q=0.8',
+        #     'upgrade-insecure-requests': '1',
+        #     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
+        # } 
+        # s = requests.Session()
+        # s.headers.update({'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+        #     'accept-encoding': 'gzip, deflate, br',
+        #     'accept-language': 'en-US,en;q=0.8',
+        #     'upgrade-insecure-requests': '1',
+        #     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
+        # })
+        # s.get(url, headers={'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+        #     'accept-encoding': 'gzip, deflate, br',
+        #     'accept-language': 'en-US,en;q=0.8',
+        #     'upgrade-insecure-requests': '1',
+        #     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
+        # })
 
-            # request_headers = {
-            #     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
-            #     'accept-encoding': 'gzip, deflate, br',
-            #     'accept-language': 'en-US,en;q=0.8',
-            #     'upgrade-insecure-requests': '1',
-            #     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
-            # } 
-            # s = requests.Session()
-            # s.headers.update({'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
-            #     'accept-encoding': 'gzip, deflate, br',
-            #     'accept-language': 'en-US,en;q=0.8',
-            #     'upgrade-insecure-requests': '1',
-            #     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
-            # })
-            # s.get(url, headers={'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
-            #     'accept-encoding': 'gzip, deflate, br',
-            #     'accept-language': 'en-US,en;q=0.8',
-            #     'upgrade-insecure-requests': '1',
-            #     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
-            # })
+        headers = {'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+            'accept-encoding': 'gzip, deflate, br',
+            'accept-language': 'en-US,en;q=0.8',
+            'upgrade-insecure-requests': '1',
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
+        }
+        r = requests.get(urls[0], headers = headers)
 
-            headers = {'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
-                'accept-encoding': 'gzip, deflate, br',
-                'accept-language': 'en-US,en;q=0.8',
-                'upgrade-insecure-requests': '1',
-                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
-            }
-            r = requests.get(url, headers = headers)
-
-            text = r.text.encode("utf-8")
-            soup = BeautifulSoup(text,"html.parser")
-            # print(r.text[0:1000])
-            
-            file.write(r.text)
-            file.close()
-            mydivs = soup.findAll("div", { "class" : "gs_r gs_or gs_scl" })
-            for div in mydivs:
-                print(div['data-cid'])
-            # mydivs = soup.findAll("div", { "class" : "gs_r gs_or gs_scl" })
-            # print((mydivs[0].['data-cid']).encode("utf-8"))
-            # need to grab the attribute text/string of datacid..
-            # currently we have the entire div 
-
-            # print(soup.findAll(res.DATA_CID_SEARCH_STRING))
-            # print(mydivs[0].encode("utf-8"))
-
-                # htmltext = urllib.request.urlopen(urls[0]).read()
-        except Exception as e:
-           print(e)      
+        text = r.text.encode("utf-8")
+        soup = BeautifulSoup(text,"html.parser")
+        # print(r.text[0:1000])
         
-        # soup = BeautifulSoup(htmltext,"html.parser")    
-        urls.pop(0)
-        # scrapeKChars = soup.prettify()[1:1000]
-
-        # file.write(scrapeKChars)
-
+        # file.write(r.text)
         # file.close()
-        #print(soup.prettify()[0::1])
-        # print(soup.findAll(res. DATA_CID_SEARCH_STRING))
+        mydivs = soup.findAll("div", { "class" : "gs_r gs_or gs_scl" })
+        for div in mydivs:
+            print(div['data-cid'].encode("utf-8"))
+        # mydivs = soup.findAll("div", { "class" : "gs_r gs_or gs_scl" })
+        # print((mydivs[0].['data-cid']).encode("utf-8"))
+        # need to grab the attribute text/string of datacid..
+        # currently we have the entire div 
+
+        # print(soup.findAll(res.DATA_CID_SEARCH_STRING))
+        # print(mydivs[0].encode("utf-8"))
+
+        # htmltext = urllib.request.urlopen(urls[0]).read()
+        i += 10
+        index = str(i)
+        urls[0] = (res.GOOGLE_SCHOLAR_SEARCH_START + index + res.GOOGLE_SCHOLAR_SEARCH_MIDDLE + 
+                testSearchCriteria + res.GOOGLE_SCHOLAR_SEARCH_END)
+    except Exception as e:
+       print(e)      
+        
+    # soup = BeautifulSoup(htmltext,"html.parser")    
+    # urls.pop(0)
+    # scrapeKChars = soup.prettify()[1:1000]
+
+    # file.write(scrapeKChars)
+
+    # file.close()
+    #print(soup.prettify()[0::1])
+    # print(soup.findAll(res. DATA_CID_SEARCH_STRING))
 
 
 
 
 
-        # When scraping the "data-cid"s May need to disregard the first one as it doesnt have a element..aka. no = afterwards
+    # When scraping the "data-cid"s May need to disregard the first one as it doesnt have a element..aka. no = afterwards
