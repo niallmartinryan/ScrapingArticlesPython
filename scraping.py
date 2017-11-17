@@ -90,16 +90,21 @@ while len(urls) > 0:
 
             text = r.text.encode("utf-8")
             soup = BeautifulSoup(text,"html.parser")
-            print(r.text[0:1000])
+            # print(r.text[0:1000])
             
             file.write(r.text)
             file.close()
             mydivs = soup.findAll("div", { "class" : "gs_r gs_or gs_scl" })
+            for div in mydivs:
+                print(div['data-cid'])
+            # mydivs = soup.findAll("div", { "class" : "gs_r gs_or gs_scl" })
+            # print((mydivs[0].['data-cid']).encode("utf-8"))
+            # need to grab the attribute text/string of datacid..
+            # currently we have the entire div 
 
+            # print(soup.findAll(res.DATA_CID_SEARCH_STRING))
+            # print(mydivs[0].encode("utf-8"))
 
-            print(soup.findAll(res.DATA_CID_SEARCH_STRING))
-
-            print(mydivs[0].encode("utf-8"))
                 # htmltext = urllib.request.urlopen(urls[0]).read()
         except Exception as e:
            print(e)      

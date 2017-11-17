@@ -22,5 +22,7 @@ DATA_CID_FILE_NAME = "data_cid_data.txt"
 
 # SCHOLAR SEARCH CRITERIA 
 DATA_CID_SEARCH_STRING = "data-cid"
-
+# try to use this again.. but currently its only working in the code
+# if you use it literally..
+DATA_CID_CLASS_STRING = "gs_r gs_or gs_scl"
 # gs_ab_mdw -> This is the tag for "about int results" to use as an upperbound I suppose
