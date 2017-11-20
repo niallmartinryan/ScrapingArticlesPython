@@ -67,7 +67,7 @@ def getBibtexText2(url):
     return None
 
 # if you get a chance.. update this function properly - > parameters + constants..
-def getBibtexURL():
+def getBibtexURL(i):
     try:
         data_cid_list = []
         # url = 'https://scholar.google.pl/citations?view_op=search_authors&mauthors=label:security'
@@ -163,7 +163,7 @@ i = 0   # increment/ index of pages
 while i <= maxNumResults: 
     # do some stuff here
     print(urls[0])
-    data_cid_list = getBibtexURL()
+    data_cid_list = getBibtexURL(i)
     for dataCid in data_cid_list:
         reqUrl = getBibtexText1(dataCid)
         time.sleep(getRandomShortDelay())
