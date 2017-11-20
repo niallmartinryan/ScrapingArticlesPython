@@ -5,3 +5,201 @@
   volume={26},
   year={2004}
 }
+@article{frisch2004gaussian,
+  title={Gaussian 03, revision C. 02; Gaussian, Inc},
+  author={Frisch, MJ and Trucks, GW and Schlegel, Hs B and Scuseria, GE and Robb, MA and Cheeseman, JR and Montgomery Jr, JA and Vreven, TKKN and Kudin, KN and Burant, JC and others},
+  journal={Wallingford, CT},
+  volume={26},
+  year={2004}
+}
+@article{frisch2008gaussian,
+  title={Gaussian 03, revision C. 02},
+  author={Frisch, MJea and Trucks, GW and Schlegel, HBea and Scuseria, GE and Robb, MA and Cheeseman, JR and Montgomery, JA and Vreven, TKKN and Kudin, KN and Burant, JCea and others},
+  year={2008}
+}
+@article{lee1993c,
+  title={The C. elegans heterochronic gene lin-4 encodes small RNAs with antisense complementarity to lin-14},
+  author={Lee, Rosalind C and Feinbaum, Rhonda L and Ambros, Victor},
+  journal={Cell},
+  volume={75},
+  number={5},
+  pages={843--854},
+  year={1993},
+  publisher={Elsevier}
+}
+@article{manns2001peginterferon,
+  title={Peginterferon alfa-2b plus ribavirin compared with interferon alfa-2b plus ribavirin for initial treatment of chronic hepatitis C: a randomised trial},
+  author={Manns, Michael P and McHutchison, John G and Gordon, Stuart C and Rustgi, Vinod K and Shiffman, Mitchell and Reindollar, Robert and Goodman, Zachary D and Koury, Kenneth and Ling, Mei-Hsiu and Albrecht, Janice K and others},
+  journal={The Lancet},
+  volume={358},
+  number={9286},
+  pages={958--965},
+  year={2001},
+  publisher={Elsevier}
+}
+@article{fried2002peginterferon,
+  title={Peginterferon alfa-2a plus ribavirin for chronic hepatitis C virus infection},
+  author={Fried, Michael W and Shiffman, Mitchell L and Reddy, K Rajender and Smith, Coleman and Marinos, George and Gon{\c{c}}ales Jr, Fernando L and H{\"a}ussinger, Dieter and Diago, Moises and Carosi, Giampiero and Dhumeaux, Daniel and others},
+  journal={New England Journal of Medicine},
+  volume={347},
+  number={13},
+  pages={975--982},
+  year={2002},
+  publisher={Mass Medical Soc}
+}
+@article{bernard2001efficacy,
+  title={Efficacy and safety of recombinant human activated protein C for severe sepsis},
+  author={Bernard, Gordon R and Vincent, Jean-Louis and Laterre, Pierre-Francois and LaRosa, Steven P and Dhainaut, Jean-Francois and Lopez-Rodriguez, Angel and Steingrub, Jay S and Garber, Gary E and Helterbrand, Jeffrey D and Ely, E Wesley and others},
+  journal={New England Journal of Medicine},
+  volume={344},
+  number={10},
+  pages={699--709},
+  year={2001},
+  publisher={Mass Medical Soc}
+}
+@article{ridker2000c,
+  title={C-reactive protein and other markers of inflammation in the prediction of cardiovascular disease in women},
+  author={Ridker, Paul M and Hennekens, Charles H and Buring, Julie E and Rifai, Nader},
+  journal={New England Journal of Medicine},
+  volume={342},
+  number={12},
+  pages={836--843},
+  year={2000},
+  publisher={Mass Medical Soc}
+}
+@article{vance1987extraction,
+  title={An extraction method for measuring soil microbial biomass C},
+  author={Vance, ED and Brookes, PC and Jenkinson, DS},
+  journal={Soil biology and Biochemistry},
+  volume={19},
+  number={6},
+  pages={703--707},
+  year={1987},
+  publisher={Elsevier}
+}
+@article{yang1997prevention,
+  title={Prevention of apoptosis by Bcl-2: release of cytochrome c from mitochondria blocked},
+  author={Yang, Jie and Liu, Xuesong and Bhalla, Kapil and Kim, Caryn Naekyung and Ibrado, Ana Maria and Cai, Jiyang and Peng, Tsung-I and Jones, Dean P and Wang, Xiaodong},
+  journal={Science},
+  volume={275},
+  number={5303},
+  pages={1129--1132},
+  year={1997},
+  publisher={American Association for the Advancement of Science}
+}
+@article{liu1996induction,
+  title={Induction of apoptotic program in cell-free extracts: requirement for dATP and cytochrome c},
+  author={Liu, Xuesong and Kim, Caryn Naekyung and Yang, Jie and Jemmerson, Ronald and Wang, Xiaodong},
+  journal={Cell},
+  volume={86},
+  number={1},
+  pages={147--157},
+  year={1996},
+  publisher={Elsevier}
+}
+@article{beringer2012review,
+  title={Review of particle physics particle data group},
+  author={Beringer, Juerg and Arguin, J-F and Barnett, RM and Copic, K and Dahl, O and Groom, DE and Lin, C-J and Lys, J and Murayama, H and Wohl, CG and others},
+  journal={Physical Review D (Particles, Fields, Gravitation and Cosmology)},
+  volume={86},
+  number={1},
+  year={2012},
+  publisher={American Physical Society}
+}
+@article{poiesz1980detection,
+  title={Detection and isolation of type C retrovirus particles from fresh and cultured lymphocytes of a patient with cutaneous T-cell lymphoma},
+  author={Poiesz, Bernard J and Ruscetti, Francis W and Gazdar, Adi F and Bunn, Paul A and Minna, John D and Gallo, Robert C},
+  journal={Proceedings of the National Academy of Sciences},
+  volume={77},
+  number={12},
+  pages={7415--7419},
+  year={1980},
+  publisher={National Acad Sciences}
+}
+@article{he1998identification,
+  title={Identification of c-MYC as a target of the APC pathway},
+  author={He, Tong-Chuan and Sparks, Andrew B and Rago, Carlo and Hermeking, Heiko and Zawel, Leigh and Da Costa, Luis T and Morin, Patrice J and Vogelstein, Bert and Kinzler, Kenneth W},
+  journal={Science},
+  volume={281},
+  number={5382},
+  pages={1509--1512},
+  year={1998},
+  publisher={American Association for the Advancement of Science}
+}
+@article{altomare1994sirpow,
+  title={SIRPOW. 92--a program for automatic solution of crystal structures by direct methods optimized for powder data},
+  author={Altomare, AGCAMCGM and Cascarano, G and Giacovazzo, C and Guagliardi, A and Burla, MC and Polidori, G t and Camalli, M},
+  journal={Journal of Applied Crystallography},
+  volume={27},
+  number={3},
+  pages={435--436},
+  year={1994},
+  publisher={International Union of Crystallography}
+}
+@article{raunkiaer1934life,
+  title={The life forms of plants and statistical plant geography; being the collected papers of C. Raunkiaer.},
+  author={Raunkiaer, Christen and others},
+  journal={The life forms of plants and statistical plant geography; being the collected papers of C. Raunkiaer.},
+  year={1934},
+  publisher={Oxford: Clarendon Press.}
+}
+@book{jakes1994microwave,
+  title={Microwave mobile communications},
+  author={Jakes, William C and Cox, Donald C},
+  year={1994},
+  publisher={Wiley-IEEE Press}
+}
+@article{mallows1973some,
+  title={Some comments on C p},
+  author={Mallows, Colin L},
+  journal={Technometrics},
+  volume={15},
+  number={4},
+  pages={661--675},
+  year={1973},
+  publisher={Taylor \& Francis Group}
+}
+@article{hagiwara2002review,
+  title={Review of particle physics},
+  author={Hagiwara, Kaoru and Hikasa, K and Nakamura, Kenzo and Tanabashi, M and Aguilar-Benitez, M and Amsler, C and Barnett, RMichael and Burchat, PR and Carone, CD and Caso, C and others},
+  journal={Physical Review D (Particles and Fields)},
+  volume={66},
+  number={1},
+  year={2002},
+  publisher={American Physical Society}
+}
+@article{moller1934note,
+  title={Note on an approximation treatment for many-electron systems},
+  author={M{\o}ller, Chr and Plesset, Milton S},
+  journal={Physical Review},
+  volume={46},
+  number={7},
+  pages={618},
+  year={1934},
+  publisher={APS}
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta name="viewport" content="initial-scale=1"><title>https://scholar.googleusercontent.com/scholar.bib?q=info:w8i7uUjh-9sJ:scholar.google.com/&amp;output=citation&amp;scisig=AAGBfm0AAAAAWhLo2Ub2eVPgbEAjTRj2mGKeLZ4CV_2s&amp;scisf=4&amp;ct=citation&amp;cd=-1&amp;hl=en</title></head>
+<body style="font-family: arial, sans-serif; background-color: #fff; color: #000; padding:20px; font-size:18px;" onload="e=document.getElementById('captcha');if(e){e.focus();}">
+<div style="max-width:400px;">
+<hr noshade size="1" style="color:#ccc; background-color:#ccc;"><br>
+<form action="index" method="post">
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<div id="recaptcha" class="g-recaptcha" data-sitekey="6LfwuyUTAAAAAOAmoS0fdqijC2PbbdH4kjq62Y1b"></div>
+<input type='hidden' name='q' value='EgS84pooGILNy9AFIhkA8aeDSx6y-3jXAFawqKajwyP4rN_5D24QMgFy'><input type="hidden" name="continue" value="https://scholar.googleusercontent.com/scholar.bib?q=info:w8i7uUjh-9sJ:scholar.google.com/&amp;output=citation&amp;scisig=AAGBfm0AAAAAWhLo2Ub2eVPgbEAjTRj2mGKeLZ4CV_2s&amp;scisf=4&amp;ct=citation&amp;cd=-1&amp;hl=en">
+<input type="submit" name="submit" value="Submit" style="font-size:18px; padding:4px 0;"><br><br><br>
+</form>
+<hr noshade size="1" style="color:#ccc; background-color:#ccc;">
+
+<div style="font-size:13px;">
+<b>About this page</b><br><br>Our systems have detected unusual traffic from your computer network.  This page checks to see if it&#39;s really you sending the requests, and not a robot.  <a href="#" onclick="document.getElementById('infoDiv').style.display='block';">Why did this happen?</a><br><br>
+<div id="infoDiv" style="display:none; background-color:#eee; padding:10px; margin:0 0 15px 0; line-height:1.4em;">
+This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the <a href="//www.google.com/policies/terms/">Terms of Service</a>. The block will expire shortly after those requests stop.  In the meantime, solving the above CAPTCHA will let you continue to use our services.<br><br>This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests.  If you share your network connection, ask your administrator for help &mdash; a different computer using the same IP address may be responsible.  <a href="//support.google.com/websearch/answer/86640">Learn more</a><br><br>Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly.
+</div>
+
+IP address: 188.226.154.40<br>Time: 2017-11-20T14:28:19Z<br>URL: https://scholar.googleusercontent.com/scholar.bib?q=info:w8i7uUjh-9sJ:scholar.google.com/&amp;output=citation&amp;scisig=AAGBfm0AAAAAWhLo2Ub2eVPgbEAjTRj2mGKeLZ4CV_2s&amp;scisf=4&amp;ct=citation&amp;cd=-1&amp;hl=en<br>
+</div>
+</div>
+</body>
+</html>
