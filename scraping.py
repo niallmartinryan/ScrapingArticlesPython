@@ -4,7 +4,7 @@
 # print(soup.prettify())
 import sys
 import os.path
-
+import time
 # needed in order to import resources file.. and any other file rip..
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)) + '\\resources\\')
 
@@ -15,7 +15,57 @@ import urllib
 import urllib.parse
 import urllib.request
 import requests
+import random
 
+def getRandomSleepNum():
+    return random.randint(1,25)
+
+
+
+
+def getBibtexText1(data_cid ):
+    url = (res.SCHOLAR_BIBTEX_LINK_START + str(data_cid) + res.SCHOLAR_BIBTEX_LINK_END)
+    print(url)
+    try :
+        headers = {'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+            'accept-encoding': 'gzip, deflate, br',
+            'accept-language': 'en-US,en;q=0.8',
+            'upgrade-insecure-requests': '1',
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
+        }
+        r = requests.get(url, headers = headers)
+        text = r.text.encode("utf-8")
+        soupA = BeautifulSoup(text,"html.parser")
+        # print(text)
+        # Use the resources page...
+        myLinks = soupA.findAll("a", {"class"  : "gs_citi"} )
+        myLink = myLinks[0]['href']
+        return myLink
+        
+    except Exception as e:
+       print(e)   
+    return None
+
+def getBibtexText2(url):
+    print(url)
+    try :
+        headers = {'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+            'accept-encoding': 'gzip, deflate, br',
+            'accept-language': 'en-US,en;q=0.8',
+            'upgrade-insecure-requests': '1',
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
+        }
+        r = requests.get(url, headers = headers)
+        # well hmmm
+        text = r.text.encode("utf-8").decode("utf-8") 
+        print(text)
+        return(text)
+        # Use the resources page...
+    except Exception as e:
+       print(e)   
+    return None
+
+    # When scraping the "data-cid"s May need to disregard the first one as it doesnt have a element..aka. no = afterwards
 #print(resources.sexy_url)
 # import resources.resources.ScrapingPython 
 
@@ -42,14 +92,16 @@ name_file_test = res.DATA_CID_FILE_NAME
 complete_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), name_file_test)
 file = open(complete_path, "w")
 
+# put this in resources later
+sleepConstantTime = 12
 
 
 urls = [url]
 visited = [url]
 
 # aboutResults = soup.find_all("div", class_="gs_ab_mdw")
-
-maxNumResults = 10      # This will be the result we grab from beauSoup and then -10 for the index of that page  
+data_cid_list = []
+maxNumResults = 0      # This will be the result we grab from beauSoup and then -10 for the index of that page  
 # print(urls[0])
 i = 0   # increment/ index of pages
 # while len(urls) > 0:
@@ -67,13 +119,6 @@ while i <= maxNumResults:
         #     'upgrade-insecure-requests': '1',
         #     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
         # } 
-        # s = requests.Session()
-        # s.headers.update({'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
-        #     'accept-encoding': 'gzip, deflate, br',
-        #     'accept-language': 'en-US,en;q=0.8',
-        #     'upgrade-insecure-requests': '1',
-        #     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
-        # })
         # s.get(url, headers={'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
         #     'accept-encoding': 'gzip, deflate, br',
         #     'accept-language': 'en-US,en;q=0.8',
@@ -86,6 +131,8 @@ while i <= maxNumResults:
             'accept-language': 'en-US,en;q=0.8',
             'upgrade-insecure-requests': '1',
             'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
+            # 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)'
+            #  maybe try updating the header inorder to change agent..
         }
         r = requests.get(urls[0], headers = headers)
 
@@ -97,20 +144,18 @@ while i <= maxNumResults:
         # file.close()
         mydivs = soup.findAll("div", { "class" : "gs_r gs_or gs_scl" })
         for div in mydivs:
-            print(div['data-cid'].encode("utf-8"))
-        # mydivs = soup.findAll("div", { "class" : "gs_r gs_or gs_scl" })
-        # print((mydivs[0].['data-cid']).encode("utf-8"))
-        # need to grab the attribute text/string of datacid..
-        # currently we have the entire div 
-
-        # print(soup.findAll(res.DATA_CID_SEARCH_STRING))
-        # print(mydivs[0].encode("utf-8"))
-
+            # print(div['data-cid'].encode("utf-8"))
+            myThingy = div['data-cid'].encode("utf-8")
+            # what the actual is happening here..
+            # print(myThingy.decode("utf-8"))
+            data_cid_list.append(myThingy.decode("utf-8"))
         # htmltext = urllib.request.urlopen(urls[0]).read()
         i += 10
         index = str(i)
         urls[0] = (res.GOOGLE_SCHOLAR_SEARCH_START + index + res.GOOGLE_SCHOLAR_SEARCH_MIDDLE + 
                 testSearchCriteria + res.GOOGLE_SCHOLAR_SEARCH_END)
+
+        #  going to have to have a timeout of 10-20 seconds
     except Exception as e:
        print(e)      
         
@@ -123,9 +168,12 @@ while i <= maxNumResults:
     # file.close()
     #print(soup.prettify()[0::1])
     # print(soup.findAll(res. DATA_CID_SEARCH_STRING))
+link = getBibtexText1(data_cid_list[0])
+bib = getBibtexText2(link)
+extraRandomTime = getRandomSleepNum()
+time.sleep(sleepConstantTime + extraRandomTime)
 
 
 
-
-
-    # When scraping the "data-cid"s May need to disregard the first one as it doesnt have a element..aka. no = afterwards
+# should I try to dyanamically change my ip address/// and perhaps run some threading over this??
+# This method will use the data-cid value to request the bibtexHtml
