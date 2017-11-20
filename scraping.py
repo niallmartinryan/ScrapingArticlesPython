@@ -6,10 +6,10 @@ import sys
 import os.path
 import time
 # needed in order to import resources file.. and any other file rip..
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)) + '\\resources\\')
+# sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)) + '\\resources\\')
 
 
-import resources as res
+import res as res
 from bs4 import BeautifulSoup
 import urllib
 import urllib.parse
