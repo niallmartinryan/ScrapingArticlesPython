@@ -17,8 +17,11 @@ import urllib.request
 import requests
 import random
 
-def getRandomSleepNum():
+def getRandomMidDelay():
     return random.randint(1,25)
+
+def getRandomShortDelay():
+    return random.randint(1,5)
 
 def getBibtexText1(data_cid ):
     url = (res.SCHOLAR_BIBTEX_LINK_START + str(data_cid) + res.SCHOLAR_BIBTEX_LINK_END)
@@ -63,51 +66,10 @@ def getBibtexText2(url):
        print(e)   
     return None
 
-    # When scraping the "data-cid"s May need to disregard the first one as it doesnt have a element..aka. no = afterwards
-#print(resources.sexy_url)
-# import resources.resources.ScrapingPython 
-
-# how do I want to actually want to download/store all of this stuff.. Do I want to grab all the data-cids and store them somewhere..
-#  or Do I want to dynamically have threads downloading stuff as data-cids are acquired 
-# 
-
-# KEEP YOUR NAMING OF VARIABLES CONSISTENT YOU BUMBLING FOOL  
-
-
-# look up about constants in python..
-# url = "https://scholar.google.com/scholar?=0&q=c&hl=en&as_sdt=0,5" 
-# url = res.GOOGLE_SCHOLAR_MAIN_PAGE
-searchIndex = "0"
-# searchCriteria = ""
-testSearchCriteria = "c"
-url = (res.GOOGLE_SCHOLAR_SEARCH_START + searchIndex + res.GOOGLE_SCHOLAR_SEARCH_MIDDLE + 
-        testSearchCriteria + res.GOOGLE_SCHOLAR_SEARCH_END)
-# save_path = "C:/Users/niall/Documents/A college/FourthYear/dissertation/ScrapingPython/testData/"
-name_file_test = res.DATA_CID_FILE_NAME
-
-
-# Some stuff happening here
-complete_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), name_file_test)
-file = open(complete_path, "a")
-
-# put this in resources later
-sleepConstantTime = 12
-
-
-urls = [url]
-visited = [url]
-
-# aboutResults = soup.find_all("div", class_="gs_ab_mdw")
-data_cid_list = []
-maxNumResults = 10      # This will be the result we grab from beauSoup and then -10 for the index of that page  
-# print(urls[0])
-i = 0   # increment/ index of pages
-# while len(urls) > 0:
-while i <= maxNumResults: 
-    # do some stuff here
-    print(urls[0])
-# while i <= maxNumResults:
+# if you get a chance.. update this function properly - > parameters + constants..
+def getBibtexURL():
     try:
+        data_cid_list = []
         # url = 'https://scholar.google.pl/citations?view_op=search_authors&mauthors=label:security'
 
         # request_headers = {
@@ -153,10 +115,66 @@ while i <= maxNumResults:
         urls[0] = (res.GOOGLE_SCHOLAR_SEARCH_START + index + res.GOOGLE_SCHOLAR_SEARCH_MIDDLE + 
                 testSearchCriteria + res.GOOGLE_SCHOLAR_SEARCH_END)
         time.sleep(sleepConstantTime + extraRandomTime)
+        return data_cid_list
         #  going to have to have a timeout of 10-20 seconds
     except Exception as e:
-       print(e)      
-        
+       print(e)
+       return None    
+    # When scraping the "data-cid"s May need to disregard the first one as it doesnt have a element..aka. no = afterwards
+#print(resources.sexy_url)
+# import resources.resources.ScrapingPython 
+
+# how do I want to actually want to download/store all of this stuff.. Do I want to grab all the data-cids and store them somewhere..
+#  or Do I want to dynamically have threads downloading stuff as data-cids are acquired 
+# 
+
+# KEEP YOUR NAMING OF VARIABLES CONSISTENT YOU BUMBLING FOOL  
+
+
+# look up about constants in python..
+# url = "https://scholar.google.com/scholar?=0&q=c&hl=en&as_sdt=0,5" 
+# url = res.GOOGLE_SCHOLAR_MAIN_PAGE
+searchIndex = "0"
+# searchCriteria = ""
+testSearchCriteria = "c"
+url = (res.GOOGLE_SCHOLAR_SEARCH_START + searchIndex + res.GOOGLE_SCHOLAR_SEARCH_MIDDLE + 
+        testSearchCriteria + res.GOOGLE_SCHOLAR_SEARCH_END)
+# save_path = "C:/Users/niall/Documents/A college/FourthYear/dissertation/ScrapingPython/testData/"
+name_file_test = res.DATA_CID_FILE_NAME
+
+
+# Some stuff happening here
+complete_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), name_file_test)
+file = open(complete_path, "a")
+
+# put this in resources later
+sleepConstantTime = 12
+
+
+urls = [url]
+visited = [url]
+
+# aboutResults = soup.find_all("div", class_="gs_ab_mdw")
+
+maxNumResults = 10      # This will be the result we grab from beauSoup and then -10 for the index of that page  
+# print(urls[0])
+i = 0   # increment/ index of pages
+# while len(urls) > 0:
+while i <= maxNumResults: 
+    # do some stuff here
+    print(urls[0])
+    data_cid_list = getBibtexURL()
+    for dataCid in data_cid_list:
+        reqUrl = getBibtexText1(dataCid)
+        time.sleep(getRandomShortDelay())
+        # maybe I should write to the file after this.. instead of auto doing it in the file
+        getBibtexText2(reqUrl)
+        extraRandomTime = getRandomMedDelay()
+        time.sleep(sleepConstantTime + extraRandomTime)
+
+    extraRandomTime = getRandomMedDelay()
+    time.sleep(sleepConstantTime + extraRandomTime)
+# while i <= maxNumResults:
     # soup = BeautifulSoup(htmltext,"html.parser")    
     # urls.pop(0)
     # scrapeKChars = soup.prettify()[1:1000]
@@ -168,8 +186,9 @@ while i <= maxNumResults:
     # print(soup.findAll(res. DATA_CID_SEARCH_STRING))
 link = getBibtexText1(data_cid_list[0])
 bib = getBibtexText2(link)
-extraRandomTime = getRandomSleepNum()
+extraRandomTime = getRandomMedDelay()
 time.sleep(sleepConstantTime + extraRandomTime)
+
 
 
 
