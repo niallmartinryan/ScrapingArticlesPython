@@ -138,7 +138,7 @@ while i <= maxNumResults:
         soup = BeautifulSoup(text,"html.parser")
         # print(r.text[0:1000])
         
-        file.write(r.text)
+        # file.write(r.text)
         # file.close()
         mydivs = soup.findAll("div", { "class" : "gs_r gs_or gs_scl" })
         for div in mydivs:

@@ -1,0 +1,7 @@
+@article{frisch2004gaussian,
+  title={Gaussian 03, revision C. 02; Gaussian, Inc},
+  author={Frisch, MJ and Trucks, GW and Schlegel, Hs B and Scuseria, GE and Robb, MA and Cheeseman, JR and Montgomery Jr, JA and Vreven, TKKN and Kudin, KN and Burant, JC and others},
+  journal={Wallingford, CT},
+  volume={26},
+  year={2004}
+}
