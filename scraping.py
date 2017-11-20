@@ -163,7 +163,7 @@ while i <= maxNumResults:
     print(data_cid_list)
     for dataCid in data_cid_list:
         reqUrl = getBibtexText1(dataCid)
-        time.sleep(getRandomShortDelay())
+        time.sleep(getRandomMidDelay())
         # maybe I should write to the file after this.. instead of auto doing it in the file
         getBibtexText2(reqUrl)
         extraRandomTime = getRandomMidDelay()
