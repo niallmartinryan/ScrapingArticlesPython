@@ -20,9 +20,6 @@ import random
 def getRandomSleepNum():
     return random.randint(1,25)
 
-
-
-
 def getBibtexText1(data_cid ):
     url = (res.SCHOLAR_BIBTEX_LINK_START + str(data_cid) + res.SCHOLAR_BIBTEX_LINK_END)
     print(url)
@@ -59,6 +56,7 @@ def getBibtexText2(url):
         # well hmmm
         text = r.text.encode("utf-8").decode("utf-8") 
         print(text)
+        file.write(text)
         return(text)
         # Use the resources page...
     except Exception as e:
@@ -90,7 +88,7 @@ name_file_test = res.DATA_CID_FILE_NAME
 
 # Some stuff happening here
 complete_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), name_file_test)
-file = open(complete_path, "w")
+file = open(complete_path, "a")
 
 # put this in resources later
 sleepConstantTime = 12
@@ -101,7 +99,7 @@ visited = [url]
 
 # aboutResults = soup.find_all("div", class_="gs_ab_mdw")
 data_cid_list = []
-maxNumResults = 0      # This will be the result we grab from beauSoup and then -10 for the index of that page  
+maxNumResults = 10      # This will be the result we grab from beauSoup and then -10 for the index of that page  
 # print(urls[0])
 i = 0   # increment/ index of pages
 # while len(urls) > 0:
@@ -154,7 +152,7 @@ while i <= maxNumResults:
         index = str(i)
         urls[0] = (res.GOOGLE_SCHOLAR_SEARCH_START + index + res.GOOGLE_SCHOLAR_SEARCH_MIDDLE + 
                 testSearchCriteria + res.GOOGLE_SCHOLAR_SEARCH_END)
-
+        time.sleep(sleepConstantTime + extraRandomTime)
         #  going to have to have a timeout of 10-20 seconds
     except Exception as e:
        print(e)      
