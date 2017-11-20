@@ -114,7 +114,7 @@ def getBibtexURL(i):
         index = str(i)
         urls[0] = (res.GOOGLE_SCHOLAR_SEARCH_START + index + res.GOOGLE_SCHOLAR_SEARCH_MIDDLE + 
                 testSearchCriteria + res.GOOGLE_SCHOLAR_SEARCH_END)
-        time.sleep(sleepConstantTime + extraRandomTime)
+        time.sleep(sleepConstantTime + getRandomShortDelay)
         return data_cid_list
         #  going to have to have a timeout of 10-20 seconds
     except Exception as e:
@@ -164,15 +164,16 @@ while i <= maxNumResults:
     # do some stuff here
     print(urls[0])
     data_cid_list = getBibtexURL(i)
+    print(data_cid_list)
     for dataCid in data_cid_list:
         reqUrl = getBibtexText1(dataCid)
         time.sleep(getRandomShortDelay())
         # maybe I should write to the file after this.. instead of auto doing it in the file
         getBibtexText2(reqUrl)
-        extraRandomTime = getRandomMedDelay()
+        extraRandomTime = getRandomMidDelay()
         time.sleep(sleepConstantTime + extraRandomTime)
 
-    extraRandomTime = getRandomMedDelay()
+    extraRandomTime = getRandomMidDelay()
     time.sleep(sleepConstantTime + extraRandomTime)
 # while i <= maxNumResults:
     # soup = BeautifulSoup(htmltext,"html.parser")    
@@ -186,7 +187,7 @@ while i <= maxNumResults:
     # print(soup.findAll(res. DATA_CID_SEARCH_STRING))
 link = getBibtexText1(data_cid_list[0])
 bib = getBibtexText2(link)
-extraRandomTime = getRandomMedDelay()
+extraRandomTime = getRandomMidDelay()
 time.sleep(sleepConstantTime + extraRandomTime)
 
 
