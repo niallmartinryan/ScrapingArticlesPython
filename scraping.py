@@ -67,9 +67,9 @@ def getBibtexText2(url):
     return None
 
 # if you get a chance.. update this function properly - > parameters + constants..
-def getBibtexURL(i):
+def getBibtexURL():
+    data_cid_list = []
     try:
-        data_cid_list = []
         # url = 'https://scholar.google.pl/citations?view_op=search_authors&mauthors=label:security'
 
         # request_headers = {
@@ -110,11 +110,7 @@ def getBibtexURL(i):
             # print(myThingy.decode("utf-8"))
             data_cid_list.append(myThingy.decode("utf-8"))
         # htmltext = urllib.request.urlopen(urls[0]).read()
-        i += 10
-        index = str(i)
-        urls[0] = (res.GOOGLE_SCHOLAR_SEARCH_START + index + res.GOOGLE_SCHOLAR_SEARCH_MIDDLE + 
-                testSearchCriteria + res.GOOGLE_SCHOLAR_SEARCH_END)
-        time.sleep(sleepConstantTime + getRandomShortDelay)
+        # time.sleep(sleepConstantTime + getRandomShortDelay)
         return data_cid_list
         #  going to have to have a timeout of 10-20 seconds
     except Exception as e:
@@ -163,7 +159,7 @@ i = 0   # increment/ index of pages
 while i <= maxNumResults: 
     # do some stuff here
     print(urls[0])
-    data_cid_list = getBibtexURL(i)
+    data_cid_list = getBibtexURL()
     print(data_cid_list)
     for dataCid in data_cid_list:
         reqUrl = getBibtexText1(dataCid)
@@ -173,6 +169,10 @@ while i <= maxNumResults:
         extraRandomTime = getRandomMidDelay()
         time.sleep(sleepConstantTime + extraRandomTime)
 
+    i += 10
+    index = str(i)
+    urls[0] = (res.GOOGLE_SCHOLAR_SEARCH_START + index + res.GOOGLE_SCHOLAR_SEARCH_MIDDLE + 
+            testSearchCriteria + res.GOOGLE_SCHOLAR_SEARCH_END)
     extraRandomTime = getRandomMidDelay()
     time.sleep(sleepConstantTime + extraRandomTime)
 # while i <= maxNumResults:
