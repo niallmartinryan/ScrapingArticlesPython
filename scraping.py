@@ -90,7 +90,7 @@ name_file_test = res.DATA_CID_FILE_NAME
 
 # Some stuff happening here
 complete_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), name_file_test)
-file = open(complete_path, "w")
+file = open(complete_path, "a")
 
 # put this in resources later
 sleepConstantTime = 12
@@ -140,7 +140,7 @@ while i <= maxNumResults:
         soup = BeautifulSoup(text,"html.parser")
         # print(r.text[0:1000])
         
-        # file.write(r.text)
+        file.write(r.text)
         # file.close()
         mydivs = soup.findAll("div", { "class" : "gs_r gs_or gs_scl" })
         for div in mydivs:
