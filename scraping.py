@@ -18,20 +18,29 @@ import requests
 import random
 
 def getRandomMidDelay():
-    return random.randint(1,25)
+    return random.randint(15,25)
 
 def getRandomShortDelay():
     return random.randint(1,5)
+
+def getRandomStandardDelay():
+    return random.randint(20, 40)
+
+def getRandomUserAgent():
+    return res.USER_AGENT_STRING[random.randint(0,len(res.USER_AGENT_STRING))]
 
 def getBibtexText1(data_cid ):
     url = (res.SCHOLAR_BIBTEX_LINK_START + str(data_cid) + res.SCHOLAR_BIBTEX_LINK_END)
     print(url)
     try :
+        userAgent = getRandomUserAgent()
+
         headers = {'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
             'accept-encoding': 'gzip, deflate, br',
             'accept-language': 'en-US,en;q=0.8',
             'upgrade-insecure-requests': '1',
-            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
+            'user-agent': userAgent
+            # 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
         }
         r = requests.get(url, headers = headers)
         text = r.text.encode("utf-8")
@@ -49,11 +58,12 @@ def getBibtexText1(data_cid ):
 def getBibtexText2(url):
     print(url)
     try :
+        userAgent = getRandomUserAgent()
         headers = {'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
             'accept-encoding': 'gzip, deflate, br',
             'accept-language': 'en-US,en;q=0.8',
             'upgrade-insecure-requests': '1',
-            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
+            'user-agent': userAgent
         }
         r = requests.get(url, headers = headers)
         # well hmmm
@@ -66,10 +76,18 @@ def getBibtexText2(url):
        print(e)   
     return None
 
+def getNamesData():
+    with open("finalNames.txt","r") as lines:
+        result = []
+        for line in lines:
+            result.append(line)
+    return result
+
 # if you get a chance.. update this function properly - > parameters + constants..
 def getBibtexURL():
     data_cid_list = []
     try:
+        userAgent = getRandomUserAgent()
         # url = 'https://scholar.google.pl/citations?view_op=search_authors&mauthors=label:security'
 
         # request_headers = {
@@ -90,7 +108,7 @@ def getBibtexURL():
             'accept-encoding': 'gzip, deflate, br',
             'accept-language': 'en-US,en;q=0.8',
             'upgrade-insecure-requests': '1',
-            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
+            'user-agent': userAgent
             # 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)'
             #  maybe try updating the header inorder to change agent..
         }
@@ -130,66 +148,65 @@ def getBibtexURL():
 # look up about constants in python..
 # url = "https://scholar.google.com/scholar?=0&q=c&hl=en&as_sdt=0,5" 
 # url = res.GOOGLE_SCHOLAR_MAIN_PAGE
-searchIndex = "0"
-# searchCriteria = ""
-testSearchCriteria = "c"
-url = (res.GOOGLE_SCHOLAR_SEARCH_START + searchIndex + res.GOOGLE_SCHOLAR_SEARCH_MIDDLE + 
-        testSearchCriteria + res.GOOGLE_SCHOLAR_SEARCH_END)
-# save_path = "C:/Users/niall/Documents/A college/FourthYear/dissertation/ScrapingPython/testData/"
-name_file_test = res.DATA_CID_FILE_NAME
-
-
-# Some stuff happening here
-complete_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), name_file_test)
-file = open(complete_path, "a")
-
-# put this in resources later
-sleepConstantTime = 12
-
-
-urls = [url]
-visited = [url]
-
-# aboutResults = soup.find_all("div", class_="gs_ab_mdw")
-
-maxNumResults = 10      # This will be the result we grab from beauSoup and then -10 for the index of that page  
-# print(urls[0])
-i = 0   # increment/ index of pages
-# while len(urls) > 0:
-while i <= maxNumResults: 
-    # do some stuff here
-    print(urls[0])
-    data_cid_list = getBibtexURL()
-    print(data_cid_list)
-    for dataCid in data_cid_list:
-        reqUrl = getBibtexText1(dataCid)
-        time.sleep(getRandomMidDelay())
-        # maybe I should write to the file after this.. instead of auto doing it in the file
-        getBibtexText2(reqUrl)
-        extraRandomTime = getRandomMidDelay()
-        time.sleep(sleepConstantTime + extraRandomTime)
-
-    i += 10
-    index = str(i)
-    urls[0] = (res.GOOGLE_SCHOLAR_SEARCH_START + index + res.GOOGLE_SCHOLAR_SEARCH_MIDDLE + 
+def Main():
+    names = getNamesData()
+    searchIndex = "0"
+    # searchCriteria = ""
+    testSearchCriteria = "a"
+    url = (res.GOOGLE_SCHOLAR_SEARCH_START + searchIndex + res.GOOGLE_SCHOLAR_SEARCH_MIDDLE + 
             testSearchCriteria + res.GOOGLE_SCHOLAR_SEARCH_END)
-    extraRandomTime = getRandomMidDelay()
-    time.sleep(sleepConstantTime + extraRandomTime)
-# while i <= maxNumResults:
-    # soup = BeautifulSoup(htmltext,"html.parser")    
-    # urls.pop(0)
-    # scrapeKChars = soup.prettify()[1:1000]
+    # save_path = "C:/Users/niall/Documents/A college/FourthYear/dissertation/ScrapingPython/testData/"
+    name_file_test = res.DATA_CID_FILE_NAME
 
-    # file.write(scrapeKChars)
+    # Some stuff happening here
+    complete_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), name_file_test)
+    file = open(complete_path, "a")
 
-    # file.close()
-    #print(soup.prettify()[0::1])
-    # print(soup.findAll(res. DATA_CID_SEARCH_STRING))
-link = getBibtexText1(data_cid_list[0])
-bib = getBibtexText2(link)
-extraRandomTime = getRandomMidDelay()
-time.sleep(sleepConstantTime + extraRandomTime)
+    # put this in resources later
+    sleepConstantTime = 12
 
+
+    urls = [url]
+    visited = [url]
+
+    # aboutResults = soup.find_all("div", class_="gs_ab_mdw")
+
+    maxNumResults = 0      # This will be the result we grab from beauSoup and then -10 for the index of that page  
+    # print(urls[0])
+    i = 0   # increment/ index of pages
+    # while len(urls) > 0:
+    while i <= maxNumResults: 
+        # do some stuff here
+        print(urls[0])
+        data_cid_list = getBibtexURL()
+        print(data_cid_list)
+        for dataCid in data_cid_list:
+            reqUrl = getBibtexText1(dataCid)
+            time.sleep(getRandomStandardDelay())
+            # maybe I should write to the file after this.. instead of auto doing it in the file
+            getBibtexText2(reqUrl)
+            time.sleep(getRandomStandardDelay())
+
+        i += 10
+        index = str(i)
+        urls[0] = (res.GOOGLE_SCHOLAR_SEARCH_START + index + res.GOOGLE_SCHOLAR_SEARCH_MIDDLE + 
+                testSearchCriteria + res.GOOGLE_SCHOLAR_SEARCH_END)
+        time.sleep(getRandomStandardDelay())
+    # while i <= maxNumResults:
+        # soup = BeautifulSoup(htmltext,"html.parser")    
+        # urls.pop(0)
+        # scrapeKChars = soup.prettify()[1:1000]
+
+        # file.write(scrapeKChars)
+
+        # file.close()
+        #print(soup.prettify()[0::1])
+        # print(soup.findAll(res. DATA_CID_SEARCH_STRING))
+    # link = getBibtexText1(data_cid_list[0])
+    # bib = getBibtexText2(link)
+    # extraRandomTime = getRandomMidDelay()
+    # time.sleep(sleepConstantTime + extraRandomTime)
+Main()
 
 
 
