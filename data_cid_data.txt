@@ -178,3 +178,82 @@
   year={1934},
   publisher={APS}
 }
+@article{harris1994revised,
+  title={A revised European-American classification of lymphoid neoplasms: a proposal from the International Lymphoma Study Group},
+  author={Harris, Nancy Lee and Jaffe, Elaine S and Stein, Harald and Banks, Peter M and Chan, John KC and Cleary, Michael L and Delsol, Georges and De Wolf-Peeters, Christine and Falini, Brunangelo and Gatter, Kevin C and others},
+  journal={Blood},
+  volume={84},
+  number={5},
+  pages={1361--1392},
+  year={1994},
+  publisher={by The American Society of Hematology}
+}
+@article{miles1984qualitative,
+  title={Qualitative data analysis: A sourcebook},
+  author={Miles, Matthew B and Huberman, A Michael and Saldana, J},
+  journal={Beverly Hills},
+  year={1984},
+  publisher={JSTOR}
+}
+@article{feinberg1983technique,
+  title={A technique for radiolabeling DNA restriction endonuclease fragments to high specific activity},
+  author={Feinberg, Andrew P and Vogelstein, Bert},
+  journal={Analytical biochemistry},
+  volume={132},
+  number={1},
+  pages={6--13},
+  year={1983},
+  publisher={Elsevier}
+}
+@article{treisman1980feature,
+  title={A feature-integration theory of attention},
+  author={Treisman, Anne M and Gelade, Garry},
+  journal={Cognitive psychology},
+  volume={12},
+  number={1},
+  pages={97--136},
+  year={1980},
+  publisher={Elsevier}
+}
+@article{yesavage1982development,
+  title={Development and validation of a geriatric depression screening scale: a preliminary report},
+  author={Yesavage, Jerome A and Brink, Terence L and Rose, Terence L and Lum, Owen and Huang, Virginia and Adey, Michael and Leirer, Von Otto},
+  journal={Journal of psychiatric research},
+  volume={17},
+  number={1},
+  pages={37--49},
+  year={1982},
+  publisher={Elsevier}
+}
+@book{schon1987educating,
+  title={Educating the reflective practitioner: Toward a new design for teaching and learning in the professions.},
+  author={Sch{\"o}n, Donald A},
+  year={1987},
+  publisher={Jossey-Bass}
+}
+@book{turner1987rediscovering,
+  title={Rediscovering the social group: A self-categorization theory.},
+  author={Turner, John C and Hogg, Michael A and Oakes, Penelope J and Reicher, Stephen D and Wetherell, Margaret S},
+  year={1987},
+  publisher={Basil Blackwell}
+}
+@article{shamir1979share,
+  title={How to share a secret},
+  author={Shamir, Adi},
+  journal={Communications of the ACM},
+  volume={22},
+  number={11},
+  pages={612--613},
+  year={1979},
+  publisher={ACm}
+}
+@article{chatrchyan2012observation,
+  title={Observation of a new boson at a mass of 125 GeV with the CMS experiment at the LHC},
+  author={Chatrchyan, Serguei and Khachatryan, Vardan and Sirunyan, Albert M and Tumasyan, Armen and Adam, Wolfgang and Aguilo, Ernest and Bergauer, T and Dragicevic, M and Er{\"o}, J and Fabjan, C and others},
+  journal={Physics Letters B},
+  volume={716},
+  number={1},
+  pages={30--61},
+  year={2012},
+  publisher={Elsevier}
+}

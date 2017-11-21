@@ -69,7 +69,7 @@ def getBibtexText2(url):
         # well hmmm
         text = r.text.encode("utf-8").decode("utf-8") 
         print(text)
-        file.write(text)
+        # file.write(text)
         return(text)
         # Use the resources page...
     except Exception as e:
@@ -84,7 +84,7 @@ def getNamesData():
     return result
 
 # if you get a chance.. update this function properly - > parameters + constants..
-def getBibtexURL():
+def getBibtexURL(url):
     data_cid_list = []
     try:
         userAgent = getRandomUserAgent()
@@ -112,7 +112,7 @@ def getBibtexURL():
             # 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)'
             #  maybe try updating the header inorder to change agent..
         }
-        r = requests.get(urls[0], headers = headers)
+        r = requests.get(url, headers = headers)
 
         text = r.text.encode("utf-8")
         soup = BeautifulSoup(text,"html.parser")
@@ -166,8 +166,8 @@ def Main():
     sleepConstantTime = 12
 
 
-    urls = [url]
-    visited = [url]
+    # urls = [url]
+    # visited = [url]
 
     # aboutResults = soup.find_all("div", class_="gs_ab_mdw")
 
@@ -177,19 +177,19 @@ def Main():
     # while len(urls) > 0:
     while i <= maxNumResults: 
         # do some stuff here
-        print(urls[0])
-        data_cid_list = getBibtexURL()
+        print(url)
+        data_cid_list = getBibtexURL(url)
         print(data_cid_list)
         for dataCid in data_cid_list:
+            time.sleep(getRandomStandardDelay())
             reqUrl = getBibtexText1(dataCid)
-            time.sleep(getRandomStandardDelay())
             # maybe I should write to the file after this.. instead of auto doing it in the file
-            getBibtexText2(reqUrl)
             time.sleep(getRandomStandardDelay())
+            file.write(getBibtexText2(reqUrl))
 
         i += 10
         index = str(i)
-        urls[0] = (res.GOOGLE_SCHOLAR_SEARCH_START + index + res.GOOGLE_SCHOLAR_SEARCH_MIDDLE + 
+        url = (res.GOOGLE_SCHOLAR_SEARCH_START + index + res.GOOGLE_SCHOLAR_SEARCH_MIDDLE + 
                 testSearchCriteria + res.GOOGLE_SCHOLAR_SEARCH_END)
         time.sleep(getRandomStandardDelay())
     # while i <= maxNumResults:
