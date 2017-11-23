@@ -1,3 +1,20 @@
 https://dl.acm.org/downformats.cfm?id=965498&parent_id=965400&expformat=bibtex
 
 ## SECOND ID IS IMPORTANT... FIRST ID IS THE ITERABLE ONE
+
+
+https://dl.acm.org/citation.cfm?doid=234543.500000
+
+
+// first this
+https://dl.acm.org/citation.cfm?id=214568
+// grab this id 
+<meta name="citation_abstract_html_url" content="http://dl.acm.org/citation.cfm?id=214528.214567">
+
+// then 
+https://dl.acm.org/citation.cfm?id=214528.214567&expformat=bibtex
+
+
+OOOORRRRRRR ->>>>>>
+
+https://dl.acm.org/downformats.cfm?id=965498&parent_id=&expformat=bibtex

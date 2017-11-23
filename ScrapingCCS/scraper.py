@@ -3,6 +3,7 @@ import sys
 import os.path
 import time
 
+import res 
 from bs4 import BeautifulSoup
 import urllib
 import urllib.parse
@@ -28,7 +29,8 @@ import random
 
 def getRequest(url, params, headers):
 	try:
-		req = requests.get(url, params=params)
+		# May have forgotten headers here..
+		req = requests.get(url, params=params, headers=headers)
 
 		soup = BeautifulSoup(req.text, "html.parser")
 
@@ -105,8 +107,8 @@ def Main():
 	# at the end of this while.. I would need to reinitialise moveOn to true.. or maybe even before this while loop
 		bibtexData = getRequest(url, params, headers)
 		param_start += param_maxnum 
-
-	
+		bibtexDatabase = parseHTMLForBibtex
+		#  not sure what this should return
 
 
 	# file.write(str(req.text))

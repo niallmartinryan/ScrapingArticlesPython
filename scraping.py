@@ -30,7 +30,7 @@ def getRandomRateDelay():
     return random.randint(30,50)
 
 def getRandomUserAgent():
-    return res.USER_AGENT_STRING[random.randint(0,len(res.USER_AGENT_STRING))]
+    return res.USER_AGENT_STRING[random.randint(0,len(res.USER_AGENT_STRING)-1)]
 
 def getBibtexText1(data_cid ):
     url = (res.SCHOLAR_BIBTEX_LINK_START + str(data_cid) + res.SCHOLAR_BIBTEX_LINK_END)
