@@ -55,6 +55,10 @@ def getNamesData():
             result.append(line)
     return result
 
+def parseHTMLForBibtex(html):
+	
+
+
 
 def Main():
 	path_file_test = "data_cid_data.txt"
