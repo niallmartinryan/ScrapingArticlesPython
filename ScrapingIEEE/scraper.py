@@ -29,7 +29,7 @@ def Main():
 	params = {
 			res.IEEE_URL_PARAM_1 : res.IEEE_URL_PARAM_1_VALUE,
 			res.IEEE_URL_PARAM_2 : res.IEEE_URL_PARAM_2_VALUE,
-			res.IEEE_URL_PARAM_3 : res.IEEE_URL_PARAM_3_VALUE
+			res.IEEE_URL_PARAM_3 : citation_id
 	}
 	headers = {
 			'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
