@@ -1,6 +1,16 @@
 #  http://ieeexplore.ieee.org/xpl/downloadCitations?citations-format=citation-only&download-format=download-bibtex&recordIds=8110474
-import res 
+import sys
+import os.path
+import time
 
+import res 
+from bs4 import BeautifulSoup
+import urllib
+import urllib.parse
+import urllib.request
+
+import requests
+import random
 # 
 # Maybe think of removing some redundant code between scrapers..
 # such as user agents -> times for waiting
@@ -8,19 +18,36 @@ import res
 # They do contain different data in their resource files though...
 
 def getRandomUserAgent():
-    return res.USER_AGENT_STRING[random.randint(0,len(res.USER_AGENT_STRING))]
+    return res.USER_AGENT_STRING[random.randint(0,len(res.USER_AGENT_STRING)-1)]
 
-def requestBibtex(url , headers, parameters):
+def requestBibtex(url , params, headers):
 	try:
 
 		req = requests.get(url, params=params , headers=headers)
 
-		soup = BeautifulSoup(req.text, "html.parser")
-
+		text = cleanMe(req.text)
+		return text
+	except Exception as e:
+		print(e)
+		return None
 		# check how to parse returned data
 
+def cleanMe(html):
+    soup = BeautifulSoup(html, "html.parser") # create a new bs4 object from the html data loaded
+    for script in soup(["script", "style"]): # remove all javascript and stylesheet code
+        script.extract()
+    # get text
+    text = soup.get_text()
+    # break into lines and remove leading and trailing space on each
+    lines = (line.strip() for line in text.splitlines())
+    # break multi-headlines into a line each
+    chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
+    # drop blank lines
+    text = '\n'.join(chunk for chunk in chunks if chunk)
+    return text
+
 def Main():
-	citation_id = 0;
+	citation_id = 8110474;
 
 	userAgent = getRandomUserAgent()
 
@@ -29,7 +56,7 @@ def Main():
 	params = {
 			res.IEEE_URL_PARAM_1 : res.IEEE_URL_PARAM_1_VALUE,
 			res.IEEE_URL_PARAM_2 : res.IEEE_URL_PARAM_2_VALUE,
-			res.IEEE_URL_PARAM_3 : citation_id
+			res.IEEE_URL_PARAM_3 : str(citation_id)
 	}
 	headers = {
 			'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
@@ -39,7 +66,7 @@ def Main():
             'user-agent': userAgent
 	}
 	values = requestBibtex(url, params, headers)
-
+	print(values)
 
 
 
