@@ -32,6 +32,7 @@ def requestBibtex(url , params, headers):
 		return None
 		# check how to parse returned data
 
+# reference this.. or tidy it up
 def cleanMe(html):
     soup = BeautifulSoup(html, "html.parser") # create a new bs4 object from the html data loaded
     for script in soup(["script", "style"]): # remove all javascript and stylesheet code

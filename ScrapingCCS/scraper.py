@@ -26,6 +26,21 @@ import random
  # y : 11
 
 # PUT ALL LITERAL DATA STRINGS IN RES FILE...
+def cleanMe(html):
+    soup = BeautifulSoup(html, "html.parser") # create a new bs4 object from the html data loaded
+    for script in soup(["script", "style"]): # remove all javascript and stylesheet code
+        script.extract()
+    # get text
+    text = soup.get_text()
+    # break into lines and remove leading and trailing space on each
+    lines = (line.strip() for line in text.splitlines())
+    # break multi-headlines into a line each
+    chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
+    # drop blank lines
+    text = '\n'.join(chunk for chunk in chunks if chunk)
+    return text
+
+
 
 def getRequest(url, params, headers):
 	try:
@@ -36,11 +51,12 @@ def getRequest(url, params, headers):
 
 		myBibtexPres = soup.findAll("pre",{"class" : "bibtex"})
 		# print(myBibtexPres)
-		# print(myBibtexPres[0])
+		# print(myBibtexPres[0].text)
+
 		return myBibtexPres
 	except Exception as e:
 		# print(e)
-		moveOn = true
+		moveOn = True
 		return None
 
 def getRandomMidDelay():
@@ -57,15 +73,10 @@ def getNamesData():
             result.append(line)
     return result
 
-def parseHTMLForBibtex(html):
-	
-
-
-
 def Main():
 	path_file_test = "data_cid_data.txt"
 	complete_path_data = os.path.join(os.path.dirname(os.path.abspath(__file__)), path_file_test)
-	file = open(complete_path_data, "w")
+	file = open(complete_path_data, "a")
 	# https://liinwww.ira.uka.de/csbib/?query=%22Hello%22 
 
 	names = getNamesData()
@@ -75,7 +86,7 @@ def Main():
 	param_start = 1
 	param_maxnum = 400
 
-	moveOn = false
+	moveOn = False
 	# Only goes up to 1000 in search 
 	url = "https://liinwww.ira.uka.de/csbib/"
 	# will need to add to this
@@ -94,7 +105,7 @@ def Main():
             'user-agent': userAgent
 	}
 	# for name in names:
-	while moveOn == false:
+	while moveOn == False:
 		
 		params = {
 			# 'query' : name,
@@ -106,12 +117,17 @@ def Main():
 			}	
 	# at the end of this while.. I would need to reinitialise moveOn to true.. or maybe even before this while loop
 		bibtexData = getRequest(url, params, headers)
-		param_start += param_maxnum 
-		bibtexDatabase = parseHTMLForBibtex
+		for bib in  bibtexData:
+			file.write(bib.text)
+		param_start += param_maxnum
+		# file.write(str(req.text)) 
+		# bibtexDatabase = parseHTMLForBibtex(bibtexData)
+		# print(bibtexDatabase)
+		# moveOn = True
 		#  not sure what this should return
 
 
-	# file.write(str(req.text))
+	
 
 
 
