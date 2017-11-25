@@ -73,6 +73,9 @@ def getNamesData():
             result.append(line)
     return result
 
+
+#  maybe wait 30 seconds per request... because we can get 400 articles per request
+
 def Main():
 	path_file_test = "data_cid_data.txt"
 	complete_path_data = os.path.join(os.path.dirname(os.path.abspath(__file__)), path_file_test)
