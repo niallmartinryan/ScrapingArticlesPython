@@ -1,4 +1,5 @@
 
+FILE_NAME = "data.txt"
 
 URL_START_STRING = "http://www.bioinformatics.org/texmed/cgi-bin/list.cgi"
 

@@ -29,9 +29,12 @@ def scrapeBibtexFromHTML(html):
 def requestBibtex(url, params, headers):
 	try:
 		req = requests.get(url, params=params, headers=headers)
-
-
-
+		soup = BeautifulSoup(req.text, "html.parser")
+		# find pre tag within html
+		bib = soup.find('pre').text
+		# parse out the actual bib entry
+		newBib = bib[bib.find("@")+1:]
+		return newBib
 	except Exception as e:
 		print(e)
 		return None
@@ -50,9 +53,8 @@ def Main():
 
 	maxCitationID = 29162941
 
-
 	params = {
-			URL_PARAM_1 = str(citationID)
+			res.URL_PARAM_1 : str(citationID)
 	}
 	headers = {
 			'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
@@ -61,20 +63,27 @@ def Main():
             'upgrade-insecure-requests': '1',
             'user-agent': userAgent
 	}
-	req = requests.get(url, params, headers)
+	req = requestBibtex(url, params, headers)
 	soup = BeautifulSoup(req.text, "html.parser")
 
-	print(soup.find("PRE"))
-	# try:
-	# 	while citationID <= maxCitationID
+	bib = soup.find('pre').text
+	print(bib)
+	newBib = bib[bib.find("@")+1:]
+	print(newBib)
 
-	# 		req = requests.get(url, params, headers)
+		
+		
+	
+	try:
+		while citationID <= maxCitationID:
 
-	# 		file.write(req)
-	# 		citationID += 1
-	# 		headers['user-agent'] = getRandomUserAgent()
-	# 		params[URL_PARAM_1] = str(citationID)
-	# except KeyboardInterrupt:
-	# 	print("citationId = " + citationId)  
+			req = requests.get(url, params, headers)
+			file.write(req)
+			citationID += 1
+			headers['user-agent'] = getRandomUserAgent()
+			params[URL_PARAM_1] = str(citationID)
+			time.sleep(getRandomShortDelay())
+	except KeyboardInterrupt:
+		print("citationId = " + citationId)  
 
 Main()
