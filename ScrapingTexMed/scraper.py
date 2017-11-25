@@ -63,21 +63,17 @@ def Main():
             'upgrade-insecure-requests': '1',
             'user-agent': userAgent
 	}
-	req = requestBibtex(url, params, headers)
-	soup = BeautifulSoup(req.text, "html.parser")
+	# req = requestBibtex(url, params, headers)
+	# soup = BeautifulSoup(req.text, "html.parser")
 
-	bib = soup.find('pre').text
-	print(bib)
-	newBib = bib[bib.find("@")+1:]
-	print(newBib)
+	# bib = soup.find('pre').text
+	# print(bib)
+	# newBib = bib[bib.find("@")+1:]
+	# print(newBib)
 
-		
-		
-	
 	try:
 		while citationID <= maxCitationID:
-
-			req = requests.get(url, params, headers)
+			req = requestBibtex(url, params, headers)
 			file.write(req)
 			citationID += 1
 			headers['user-agent'] = getRandomUserAgent()
