@@ -108,27 +108,35 @@ def Main():
             'user-agent': userAgent
 	}
 	# for name in names:
-	while moveOn == False:
-		
-		params = {
-			# 'query' : name,
-			'query' : names[0],
-			'results' : 'bibtex',
-			'sort' : 'year',
-			'start' : str(param_start) ,
-			'maxnum' : str(param_maxnum),
-			}	
-	# at the end of this while.. I would need to reinitialise moveOn to true.. or maybe even before this while loop
-		bibtexData = getRequest(url, params, headers)
-		for bib in  bibtexData:
-			file.write(bib.text)
-		param_start += param_maxnum
-		# file.write(str(req.text)) 
-		# bibtexDatabase = parseHTMLForBibtex(bibtexData)
-		# print(bibtexDatabase)
-		# moveOn = True
-		#  not sure what this should return
+	i = 0
+	try :
+		while i < len(names)
+			while moveOn == False:
+				params = {
+					# 'query' : name,
+					'query' : names[i],
+					'results' : 'bibtex',
+					'sort' : 'year',
+					'start' : str(param_start) ,
+					'maxnum' : str(param_maxnum),
+					}
+				headers['user-agent'] = getRandomUserAgent()	
+			# at the end of this while.. I would need to reinitialise moveOn to true.. or maybe even before this while loop
+				bibtexData = getRequest(url, params, headers)
+				for bib in  bibtexData:
+					file.write(bib.text)
+				param_start += param_maxnum
+				# file.write(str(req.text)) 
+				# bibtexDatabase = parseHTMLForBibtex(bibtexData)
+				# print(bibtexDatabase)
+				# moveOn = True
+				#  not sure what this should return
+			i += 1
+			param_start = 1
 
+	except Exception as e:
+		print(e)
+		print(names[i])
 
 	
 

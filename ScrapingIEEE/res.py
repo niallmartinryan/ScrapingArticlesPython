@@ -1,5 +1,7 @@
 # IEEE RESOURCE CONSTANTS && FILES
 
+FILE_NAME = "data.txt"
+
 IEEE_URL_START = "http://ieeexplore.ieee.org/xpl/downloadCitations"
 IEEE_URL_PARAM_1 = "citations-format"
 IEEE_URL_PARAM_1_VALUE =  "citation-only"

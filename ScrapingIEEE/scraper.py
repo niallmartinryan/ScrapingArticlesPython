@@ -17,6 +17,9 @@ import random
 # maybe also 
 # They do contain different data in their resource files though...
 
+def getRandomShortDelay():
+    return random.randint(2,10)
+
 def getRandomUserAgent():
     return res.USER_AGENT_STRING[random.randint(0,len(res.USER_AGENT_STRING)-1)]
 
@@ -48,8 +51,16 @@ def cleanMe(html):
     return text
 
 def Main():
-	citation_id = 8110474;
 
+	name_file_test = res.FILE_NAME
+
+	complete_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),name_file_test )
+	file = open(complete_path, "a")
+
+
+	citation_id = 4011900;
+
+	maxCitation_id = 8011901
 	userAgent = getRandomUserAgent()
 
 	url = res.IEEE_URL_START
@@ -66,9 +77,17 @@ def Main():
             'upgrade-insecure-requests': '1',
             'user-agent': userAgent
 	}
-	values = requestBibtex(url, params, headers)
-	print(values)
+	try:
+		while citation_id <= maxCitation_id 
+			values = requestBibtex(url, params, headers)
+			# print(values)
+			file.write(values)
 
-
+			headers['user-agent'] = getRandomUserAgent()
+			citation_id +=1
+			params[res.IEEE_URL_PARAM_3] = str(citation_id)
+			time.sleep(getRandomShortDelay())	
+	except KeyboardInterrupt:
+		print("citation_id : "+ citation_id)
 
 Main()
