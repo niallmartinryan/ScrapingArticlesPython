@@ -112,6 +112,7 @@ def Main():
 	try :
 		while i < len(names)
 			while moveOn == False:
+				# This is inefficient... Clean this..
 				params = {
 					# 'query' : name,
 					'query' : names[i],
