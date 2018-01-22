@@ -13,6 +13,7 @@ import requests
 import random
 
 
+# comment this code ;)
 
 def getRandomUserAgent():
     return res.USER_AGENT_STRING[random.randint(0,len(res.USER_AGENT_STRING)-1)]
@@ -63,7 +64,7 @@ def Main():
 	headers = {
 			'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
             'accept-encoding': 'gzip, deflate, br',
-            'accept-language': 'en-US,en;q=0.8',
+            'accept-language': 'en-US,en;q=0.8', q
             'upgrade-insecure-requests': '1',
             'user-agent': userAgent
 	}

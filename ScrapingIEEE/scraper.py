@@ -18,7 +18,7 @@ import random
 # They do contain different data in their resource files though...
 
 def getRandomShortDelay():
-    return random.randint(2,10)
+    return random.randint(2,12)
 
 def getRandomUserAgent():
     return res.USER_AGENT_STRING[random.randint(0,len(res.USER_AGENT_STRING)-1)]

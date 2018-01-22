@@ -34,6 +34,7 @@ def requestBibtex(url, params, headers):
 		bib = soup.find('pre').text
 		# parse out the actual bib entry
 		newBib = bib[bib.find("@")+1:]
+		print(newBib)
 		return newBib
 	except Exception as e:
 		print(e)
@@ -70,16 +71,16 @@ def Main():
 	# print(bib)
 	# newBib = bib[bib.find("@")+1:]
 	# print(newBib)
-
+	
 	try:
 		while citationID <= maxCitationID:
 			req = requestBibtex(url, params, headers)
 			file.write(req)
 			citationID += 1
 			headers['user-agent'] = getRandomUserAgent()
-			params[URL_PARAM_1] = str(citationID)
+			params[res.URL_PARAM_1] = str(citationID)
 			time.sleep(getRandomShortDelay())
 	except KeyboardInterrupt:
-		print("citationId = " + citationId)  
+		print("citationID = " + citationID)  
 
 Main()
