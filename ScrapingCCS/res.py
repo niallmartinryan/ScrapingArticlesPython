@@ -27,3 +27,14 @@ USER_AGENT_STRING = ["Mozilla/5.0 (Windows; U; Windows NT 6.1; rv:2.2) Gecko/201
 				,"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36"
 				,"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0.1"
 				,"Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)"]
+
+# String to find and disregard homepages... Sarah Problem - back slashes are needed
+# Although it might find the string "homepages/" faster I am afraid that it may be contained in an actual page of content
+
+HOME_PAGE_STRING = "\"Home Page\""
+MISC_STRING = "@Misc" 
+
+# Second option is just to get a substring of the first few characters and see if it matches a certain string
+# I think this option will be a lot faster
+HOME_PAGE_STRING2 = "@Misc{homepages/"
+

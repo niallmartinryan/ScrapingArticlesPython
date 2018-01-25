@@ -17,8 +17,13 @@ import random
 # maybe also 
 # They do contain different data in their resource files though...
 
+# This has not been caught so far
+#def getRandomShortDelay():
+#    return random.randint(12,32)
+#
+# testing this range later
 def getRandomShortDelay():
-    return random.randint(2,12)
+	return random.randint(10,26)
 
 def getRandomUserAgent():
     return res.USER_AGENT_STRING[random.randint(0,len(res.USER_AGENT_STRING)-1)]
@@ -58,7 +63,7 @@ def Main():
 	file = open(complete_path, "a")
 
 
-	citation_id = 4011900;
+	citation_id = 4012917
 
 	maxCitation_id = 8011901
 	userAgent = getRandomUserAgent()
@@ -78,16 +83,20 @@ def Main():
             'user-agent': userAgent
 	}
 	try:
-		while citation_id <= maxCitation_id 
+		while citation_id <= maxCitation_id:
 			values = requestBibtex(url, params, headers)
 			# print(values)
-			file.write(values)
-
+			if(values is None):
+				print("None\n")
+			else:
+				values = values + str("\n")
+				print(citation_id)
+				file.write(values)
+				# file.write('\n')
 			headers['user-agent'] = getRandomUserAgent()
 			citation_id +=1
 			params[res.IEEE_URL_PARAM_3] = str(citation_id)
 			time.sleep(getRandomShortDelay())	
 	except KeyboardInterrupt:
-		print("citation_id : "+ citation_id)
-
+		print("citation_id : "+ str(citation_id))
 Main()

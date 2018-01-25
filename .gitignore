@@ -25,6 +25,16 @@ wheels/
 .installed.cfg
 *.egg
 
+# ignore large txt files
+ScrapingIEEE/data.txt
+ScrapingACM/data.bib
+ScrapingACM/data.txt
+ScrapingCCS/data_cid_data.txt
+ScrapingTexMed/data.txt
+
+#ignore all safety folders
+**/safety/**
+
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.

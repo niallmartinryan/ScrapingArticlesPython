@@ -64,7 +64,7 @@ def Main():
 	headers = {
 			'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
             'accept-encoding': 'gzip, deflate, br',
-            'accept-language': 'en-US,en;q=0.8', q
+            'accept-language': 'en-US,en;q=0.8', 
             'upgrade-insecure-requests': '1',
             'user-agent': userAgent
 	}

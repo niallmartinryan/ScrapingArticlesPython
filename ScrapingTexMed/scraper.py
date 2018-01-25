@@ -14,7 +14,7 @@ import random
 
 
 def getRandomShortDelay():
-    return random.randint(2,15)
+    return random.randint(8,15)
 
 def getRandomUserAgent():
     return res.USER_AGENT_STRING[random.randint(0,len(res.USER_AGENT_STRING)-1)] 
@@ -33,8 +33,7 @@ def requestBibtex(url, params, headers):
 		# find pre tag within html
 		bib = soup.find('pre').text
 		# parse out the actual bib entry
-		newBib = bib[bib.find("@")+1:]
-		print(newBib)
+		newBib = bib[bib.find("@")+1:]	
 		return newBib
 	except Exception as e:
 		print(e)
@@ -50,7 +49,7 @@ def Main():
 	userAgent = getRandomUserAgent()
 
 	url = res.URL_START_STRING
-	citationID = 1
+	citationID = 15862
 
 	maxCitationID = 29162941
 
@@ -75,7 +74,9 @@ def Main():
 	try:
 		while citationID <= maxCitationID:
 			req = requestBibtex(url, params, headers)
-			file.write(req)
+			#if req is not None:
+			if not (req is None):			
+				file.write(req)
 			citationID += 1
 			headers['user-agent'] = getRandomUserAgent()
 			params[res.URL_PARAM_1] = str(citationID)

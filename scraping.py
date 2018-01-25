@@ -24,7 +24,7 @@ def getRandomShortDelay():
     return random.randint(1,5)
 
 def getRandomStandardDelay():
-    return random.randint(20, 40)
+    return random.randint(35, 60)
 
 def getRandomRateDelay():
     return random.randint(30,50)
@@ -34,7 +34,7 @@ def getRandomUserAgent():
 
 def getBibtexText1(data_cid ):
     url = (res.SCHOLAR_BIBTEX_LINK_START + str(data_cid) + res.SCHOLAR_BIBTEX_LINK_END)
-    print(url)
+    #print(url)
     try :
         userAgent = getRandomUserAgent()
 
@@ -71,7 +71,7 @@ def getBibtexText2(url):
         r = requests.get(url, headers = headers)
         # well hmmm
         text = r.text.encode("utf-8").decode("utf-8") 
-        print(text)
+        #print(text)
         # file.write(text)
         return(text)
         # Use the resources page...
@@ -164,9 +164,9 @@ def Main():
     # while len(urls) > 0:
     while i <= maxNumResults: 
         # do some stuff here
-        print(url)
+        #print(url)
         data_cid_list = getBibtexURL(url)
-        print(data_cid_list)
+        #print(data_cid_list)
         for dataCid in data_cid_list:
             time.sleep(getRandomStandardDelay())
             reqUrl = getBibtexText1(dataCid)

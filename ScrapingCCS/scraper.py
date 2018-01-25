@@ -46,7 +46,10 @@ def getRequest(url, params, headers):
 	try:
 		# May have forgotten headers here..
 		req = requests.get(url, params=params, headers=headers)
-
+		
+		#insert 404 response code here		
+		#if req.status_code == 404:
+		#	moveOn = True
 		soup = BeautifulSoup(req.text, "html.parser")
 
 		myBibtexPres = soup.findAll("pre",{"class" : "bibtex"})
@@ -55,15 +58,15 @@ def getRequest(url, params, headers):
 
 		return myBibtexPres
 	except Exception as e:
-		# print(e)
-		moveOn = True
+		print(e)
+		#moveOn = True
 		return None
 
 def getRandomMidDelay():
-    return random.randint(15,25)
+    return random.randint(6,15)
 
 def getRandomUserAgent():
-    return res.USER_AGENT_STRING[random.randint(0,len(res.USER_AGENT_STRING))]
+    return res.USER_AGENT_STRING[random.randint(0,len(res.USER_AGENT_STRING)-1)]
 
 
 def getNamesData():
@@ -89,7 +92,7 @@ def Main():
 	param_start = 1
 	param_maxnum = 400
 
-	moveOn = False
+	#moveOn = False
 	# Only goes up to 1000 in search 
 	url = "https://liinwww.ira.uka.de/csbib/"
 	# will need to add to this
@@ -108,11 +111,14 @@ def Main():
             'user-agent': userAgent
 	}
 	# for name in names:
-	i = 0
+	i = 3461
 	try :
-		while i < len(names)
-			while moveOn == False:
+		while i < len(names):
+			#	update 1000 to a constant somewhere
+			#while moveOn == False & param_start < 1000:
+			while param_start <1000:	
 				# This is inefficient... Clean this..
+				
 				params = {
 					# 'query' : name,
 					'query' : names[i],
@@ -122,11 +128,18 @@ def Main():
 					'maxnum' : str(param_maxnum),
 					}
 				headers['user-agent'] = getRandomUserAgent()	
-			# at the end of this while.. I would need to reinitialise moveOn to true.. or maybe even before this while loop
+				# at the end of this while.. I would need to reinitialise moveOn to true.. or maybe even before this while loop
 				bibtexData = getRequest(url, params, headers)
 				for bib in  bibtexData:
-					file.write(bib.text)
+					# Going to solve the sarah problem here by preprocessing the entries
+					#sys.exit()
+					
+					if bib.text[0:16] != res.HOME_PAGE_STRING2: 
+						file.write(bib.text)
+						
 				param_start += param_maxnum
+				# Need to add a delay				
+				time.sleep(getRandomMidDelay())
 				# file.write(str(req.text)) 
 				# bibtexDatabase = parseHTMLForBibtex(bibtexData)
 				# print(bibtexDatabase)
@@ -134,7 +147,6 @@ def Main():
 				#  not sure what this should return
 			i += 1
 			param_start = 1
-
 	except Exception as e:
 		print(e)
 		print(names[i])
