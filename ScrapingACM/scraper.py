@@ -52,7 +52,7 @@ def Main():
 	# name_file_test = 
 	target_path = "data.txt"
 	url = res.URL_START
-	index = 331
+	index = 31672
 	max_index = 3164405
 	params = {
 			res.URL_PARAM_1 : str(index),
@@ -71,8 +71,10 @@ def Main():
 	try:
 		while index < max_index:
 			stuff = getRequest(url, params, headers, target_path)
-			file.write(stuff)
-
+			if stuff is None:
+				print("found none")
+			else:
+				file.write(stuff)
 			headers['user-agent'] = getRandomUserAgent()
 			index += 1
 			params[res.URL_PARAM_1] = str(index)

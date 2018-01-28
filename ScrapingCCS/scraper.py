@@ -47,9 +47,7 @@ def getRequest(url, params, headers):
 		# May have forgotten headers here..
 		req = requests.get(url, params=params, headers=headers)
 		
-		#insert 404 response code here		
-		#if req.status_code == 404:
-		#	moveOn = True
+
 		soup = BeautifulSoup(req.text, "html.parser")
 
 		myBibtexPres = soup.findAll("pre",{"class" : "bibtex"})
@@ -58,12 +56,12 @@ def getRequest(url, params, headers):
 
 		return myBibtexPres
 	except Exception as e:
-		print(e)
-		#moveOn = True
+		# print(e)
+		moveOn = True
 		return None
 
 def getRandomMidDelay():
-    return random.randint(6,15)
+    return random.randint(15,25)
 
 def getRandomUserAgent():
     return res.USER_AGENT_STRING[random.randint(0,len(res.USER_AGENT_STRING)-1)]
@@ -92,7 +90,7 @@ def Main():
 	param_start = 1
 	param_maxnum = 400
 
-	#moveOn = False
+	moveOn = False
 	# Only goes up to 1000 in search 
 	url = "https://liinwww.ira.uka.de/csbib/"
 	# will need to add to this
@@ -111,14 +109,11 @@ def Main():
             'user-agent': userAgent
 	}
 	# for name in names:
-	i = 3461
+	i = 0
 	try :
 		while i < len(names):
-			#	update 1000 to a constant somewhere
-			#while moveOn == False & param_start < 1000:
-			while param_start <1000:	
+			while moveOn == False:
 				# This is inefficient... Clean this..
-				
 				params = {
 					# 'query' : name,
 					'query' : names[i],
@@ -127,6 +122,12 @@ def Main():
 					'start' : str(param_start) ,
 					'maxnum' : str(param_maxnum),
 					}
+				headers['user-agent'] = getRandomUserAgent()	
+			# at the end of this while.. I would need to reinitialise moveOn to true.. or maybe even before this while loop
+				bibtexData = getRequest(url, params, headers)
+				for bib in  bibtexData:
+					file.write(bib.text)
+				param_start += param_maxnum
 				headers['user-agent'] = getRandomUserAgent()	
 				# at the end of this while.. I would need to reinitialise moveOn to true.. or maybe even before this while loop
 				bibtexData = getRequest(url, params, headers)
@@ -144,15 +145,3 @@ def Main():
 				# bibtexDatabase = parseHTMLForBibtex(bibtexData)
 				# print(bibtexDatabase)
 				# moveOn = True
-				#  not sure what this should return
-			i += 1
-			param_start = 1
-	except Exception as e:
-		print(e)
-		print(names[i])
-
-	
-
-
-
-Main()

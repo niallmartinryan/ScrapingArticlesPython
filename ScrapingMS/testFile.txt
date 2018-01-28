@@ -1,0 +1,8 @@
+@inproceedings{senior1997hidden,
+	title="A hidden Markov model fingerprint classifier",
+	author="A. {Senior}",
+	booktitle="Conference Record of the Thirty-First Asilomar Conference on Signals, Systems and Computers (Cat. No.97CB36136)",
+	volume="1",
+	pages="306--310",
+	year="1997"
+}
