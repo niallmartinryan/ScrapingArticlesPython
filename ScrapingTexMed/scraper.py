@@ -14,7 +14,7 @@ import random
 
 
 def getRandomShortDelay():
-    return random.randint(8,15)
+    return random.randint(3,10)
 
 def getRandomUserAgent():
     return res.USER_AGENT_STRING[random.randint(0,len(res.USER_AGENT_STRING)-1)] 
@@ -49,7 +49,7 @@ def Main():
 	userAgent = getRandomUserAgent()
 
 	url = res.URL_START_STRING
-	citationID = 15862
+	citationID = 50423
 
 	maxCitationID = 29162941
 

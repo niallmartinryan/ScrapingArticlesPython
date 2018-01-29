@@ -39,7 +39,7 @@ def getRequest(url, params, headers, target_path):
 		return None
 
 def getRandomShortDelay():
-    return random.randint(2,20)
+    return random.randint(2,10)
 
 def Main():
 	
@@ -52,7 +52,7 @@ def Main():
 	# name_file_test = 
 	target_path = "data.txt"
 	url = res.URL_START
-	index = 31672
+	index = 49533
 	max_index = 3164405
 	params = {
 			res.URL_PARAM_1 : str(index),

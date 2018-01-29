@@ -23,7 +23,7 @@ import random
 #
 # testing this range later
 def getRandomShortDelay():
-	return random.randint(10,26)
+	return random.randint(8,15)
 
 def getRandomUserAgent():
     return res.USER_AGENT_STRING[random.randint(0,len(res.USER_AGENT_STRING)-1)]
@@ -63,7 +63,7 @@ def Main():
 	file = open(complete_path, "a")
 
 
-	citation_id = 4012917
+	citation_id = 4035962
 
 	maxCitation_id = 8011901
 	userAgent = getRandomUserAgent()
