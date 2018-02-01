@@ -23,7 +23,7 @@ import random
 #
 # testing this range later
 def getRandomShortDelay():
-	return random.randint(8,15)
+	return random.randint(6,13)
 
 def getRandomUserAgent():
     return res.USER_AGENT_STRING[random.randint(0,len(res.USER_AGENT_STRING)-1)]

@@ -6,3 +6,11 @@
 	pages="306--310",
 	year="1997"
 }
+b'@inproceedings{senior1997hidden,\r\n\ttitle="A hidden Markov model fingerprint classifier",\r\n\tauthor="A. {Senior}",\r\n\tbooktitle="Conference Record of the Thirty-First Asilomar Conference on Signals, Systems and Computers (Cat. No.97CB36136)",\r\n\tvolume="1",\r\n\tpages="306--310",\r\n\tyear="1997"\r\n}\r\n'@inproceedings{senior1997hidden,
+	title="A hidden Markov model fingerprint classifier",
+	author="A. {Senior}",
+	booktitle="Conference Record of the Thirty-First Asilomar Conference on Signals, Systems and Computers (Cat. No.97CB36136)",
+	volume="1",
+	pages="306--310",
+	year="1997"
+}

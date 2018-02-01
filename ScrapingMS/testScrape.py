@@ -53,7 +53,7 @@ def Main():
 		req2 = session.get(url, headers=headers)
 		
 		with open("testFile.txt", "a") as save:
-			save.write(req2.content)
+			save.write(str(req2.text))
 
 		#urllib.urlretrieve(url, name_file)
 		#testFile = urllib.URLopener()
