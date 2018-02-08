@@ -31,6 +31,7 @@ ScrapingACM/data.bib
 ScrapingACM/data.txt
 ScrapingCCS/data_cid_data.txt
 ScrapingTexMed/data.txt
+ScapingDBLP/data.txt
 
 #ignore all safety folders
 **/safety/**
