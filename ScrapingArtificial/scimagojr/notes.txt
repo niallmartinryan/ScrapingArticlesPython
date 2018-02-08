@@ -2,4 +2,13 @@ www.scimagojr.com/journalrank.php?page=2&total_size=28606
 
 start at page 1 and work up to id number 28606---- just count them.
 
+There happens to be exactly 1000 pages to search through for titles... and then we can create random  
+ 
+The parameters for the link are page and total_size=28606
+
+ 
+ 
+ 
+ 
+
 
